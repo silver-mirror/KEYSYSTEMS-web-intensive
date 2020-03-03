@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Table } from 'antd';
 import 'antd/dist/antd.css';
-import { Users, a } from './UsersTable'
+import Users from './UsersTable'
 import Modal from './Modal'
 
 class App extends React.Component {
@@ -33,15 +33,8 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Modal
-          triggerModal={this.triggerModal}
-          content={userData}
-          visible={modalVisible}
-          blockUser={this.blockUser}
-        />
-        <Users
-          triggerModal={this.triggerModal}
-          blockedUsers={this.state.blockedUsers} />
+        <Modal />
+        <Users blockedUsers={this.state.blockedUsers} />
       </div>
     );
   }

@@ -2,9 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import BlockUser from './BlockUser.js'
+import { connect } from 'react-redux'
+import { CHANGE_MODAL_VISIBLE } from './redux/action-types'
 import { Modal as AntdModal } from 'antd';
 
-export default class Modal extends React.Component {
+class Modal extends React.Component {
     renderContent(content = null) {
         if (!content) return null;
 
@@ -26,6 +28,8 @@ export default class Modal extends React.Component {
             blockUser
         } = this.props
 
+        console.log(this.props)
+
         return (
             <AntdModal
                 title="Дополнительная информация о пользователе"
@@ -38,3 +42,24 @@ export default class Modal extends React.Component {
             </AntdModal>)
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        visible: state.modal.visible
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        triggerModal: function () {
+            return dispatch({
+                type: CHANGE_MODAL_VISIBLE
+            });
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Modal)

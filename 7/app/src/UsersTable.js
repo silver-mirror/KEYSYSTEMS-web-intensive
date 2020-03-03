@@ -1,5 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
+import { connect } from 'react-redux';
+import { showModalAction } from './redux/actions'
 
 class Users extends React.Component {
     state = {
@@ -24,7 +26,7 @@ class Users extends React.Component {
     }
 
     onClick = (e, record) => {
-        this.props.triggerModal(e, record)
+        this.props.triggerModal(record)
     }
 
     async componentDidMount() {
@@ -56,6 +58,24 @@ class Users extends React.Component {
     }
 }
 
-export {
-    Users
-};
+
+
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        triggerModal: () => {
+            let action = showModalAction()
+            dispatch(action)
+        }
+    }
+}
+
+const ConnectedUsers = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Users)
+export default ConnectedUsers
