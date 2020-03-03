@@ -3,6 +3,7 @@ REDUX. Концепция flux, общий store
 Доп.инфа тут: https://blog.tylerbuchea.com/super-simple-react-redux-application-example/
 
 ДЗ:
+0) Выкачать приложние (app). Запустить yarn install
 1) Установить редакс
 npm install --save redux react-redux 
 или
